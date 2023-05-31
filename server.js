@@ -16,12 +16,10 @@ app.use("/api/todo", todoRoutes);
 
 
 app.get("", (req, res) => {
-//     res.status(200).json({
-//         message: "Hello, This is Team Encoding...🌺 Taskbit Server is Running...⚙️"
-//     });
-       text:{
-            res.send('Greetings from GeeksforGeeks');
-        });
+    res.status(200).json({
+        message: "Taskbit Server is Running...⚙️"
+    });
+      
 });
 
 app.listen(3000, (err) => {
