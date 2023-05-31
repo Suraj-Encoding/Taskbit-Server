@@ -19,9 +19,8 @@ app.get("", (req, res) => {
 //     res.status(200).json({
 //         message: "Hello, This is Team Encoding...🌺 Taskbit Server is Running...⚙️"
 //     });
-      res.format({
-        html: function () {
-            res.send('<p> Taskbit Server is Running...⚙️ </p>');
+       text:{
+            res.send('Greetings from GeeksforGeeks');
         });
 });
 
