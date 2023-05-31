@@ -17,7 +17,7 @@ app.use("/api/todo", todoRoutes);
 
 app.get("", (req, res) => {
     res.status(200).json({
-        message: "hello world!"
+        message: "Hello, This is Team Encoding...🌺 Taskbit Server is Running...⚙️"
     });
 });
 
