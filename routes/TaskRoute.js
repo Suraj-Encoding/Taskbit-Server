@@ -1,10 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
-
-
-
-//model imports 
-const User = require("../models/UserModel");
 const Todo = require("../models/TodoModel");
 const auth = require("../middlewares/auth");
 const router = express.Router();
@@ -91,13 +85,6 @@ const addTodo = async (req, res) => {
 
     try {
 
-        // let etitle = await bcrypt.hash(title, 6);
-        // let edesc = await bcrypt.hash(description, 6);
-        // let estart = await bcrypt.hash(start, 6);
-        // let etag = await bcrypt.hash(tag, 6);
-        // let edue = await bcrypt.hash(due, 6);
-
-        // # Normal Data
         const todoObj = new Todo({
             title: title,
             description: description,
@@ -109,18 +96,6 @@ const addTodo = async (req, res) => {
             userId: user._id
         });
 
-        // # Encrypted Data
-        // const todoObj = new Todo({
-        //     title: etitle,
-        //     description: edesc,
-        //     isCompleted: false,
-        //     progress: false,
-        //     start: estart,
-        //     tag: etag,
-        //     due: edue,
-        //     userId: user._id
-        // });
-
         const savedTodo = await todoObj.save();
         return res.status(201).json(savedTodo)
     } catch (error) {
@@ -130,10 +105,8 @@ const addTodo = async (req, res) => {
 }
 
 const updateTodo = async (req, res) => {
-    // const { title, description, isCompleted, todoId } = req.body;
-    const { title, description, isCompleted, progress, start, due, tag, todoId } = req.body;
 
-    //console.log(res.locals.user);
+    const { title, description, isCompleted, progress, start, due, tag, todoId } = req.body;
 
     const user = res.locals.user;
 
@@ -159,12 +132,6 @@ const updateTodo = async (req, res) => {
             return res.status(400).json({ error: "Todo do not exist." });
         }
 
-        // let etitle = await bcrypt.hash(title, 6);
-        // let edesc = await bcrypt.hash(description, 6);
-        // let estart = await bcrypt.hash(start, 6);
-        // let etag = await bcrypt.hash(tag, 6);
-        // let edue = await bcrypt.hash(due, 6);
-
         todo.title = title;
         todo.description = description;
         todo.isCompleted = isCompleted;
@@ -173,15 +140,6 @@ const updateTodo = async (req, res) => {
         todo.start = start;
         todo.due = due;
         todo.tag = tag;
-
-        // todo.title = etitle;
-        // todo.description = edesc;
-        // todo.isCompleted = isCompleted;
-        // todo.progress = progress;
-
-        // todo.start = estart;
-        // todo.due = edue;
-        // todo.tag = etag;
 
         const updatedTodo = await todo.save();
 

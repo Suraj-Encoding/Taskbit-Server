@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
 
-//router imports
 const userRoutes = require("./routes/UserRoute");
 const todoRoutes = require("./routes/TaskRoute");
 
@@ -19,7 +18,7 @@ app.get("", (req, res) => {
     res.status(200).json({
         message: "Taskbit Server is Running...⚙️"
     });
-      
+
 });
 
 app.listen(3000, (err) => {
@@ -29,7 +28,6 @@ app.listen(3000, (err) => {
     console.log("Server is running at http://localhost:3000");
 });
 
-// mongoose.connect("mongodb+srv://bc007:msdhoni007@cluster0.dcb5w.mongodb.net/tododb?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true },(err) => {
 mongoose.connect("mongodb+srv://Suraj116:Encoding@cluster-0.pekhurp.mongodb.net/TodoDB?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true }, (err) => {
     if (err) {
         console.log(err);

@@ -2,12 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//model imports
 const User = require("../models/UserModel");
-
 const SECRET = "idhiadhkladkndkan980e7070270928093uhlwndkndknakdnad";
-
-
 
 const router = express.Router();
 
@@ -162,6 +158,5 @@ router.post("/register", register);
 router.post("/login", login);
 router.post("/forget", forget);
 router.get("", getAllUsers);
-
 
 module.exports = router;
